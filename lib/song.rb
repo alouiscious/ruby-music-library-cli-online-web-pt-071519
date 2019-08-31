@@ -1,41 +1,61 @@
+require 'pry'
+
 class Song
-    attr_accessor :name, :genre, :artist, :songs
+    attr_accessor :name, :songs
+    attr_reader :artist, :genre 
     @@all = []
 
-    
-    def self.all # Class Reader
-        @@all
-    end
-    
-    def self.create
-        @@all = Song.new
-        @@all.save
-        return song
+    def self.create(name)
+       new(name).save
+
     end
 
-    def self.count
-        @@all.size
-    end
-
-
-    def self.destroy_all
-        @@all.clear
+    def save        # Instance Method
+        @@all << self
+        self
     end
     
-    def initialize
+    def initialize(name,artist=nil,genre=nil)
+        @name = name
+        self.artist = artist
+        self.genre = genre 
         save
     end
 
-    def save
-        @@all << self
+    def artist=(artist)
+        @artist = artist
+        artist.add_song(self) if artist
     end
 
-    def add_song(artist = "")
-        @@all << Song.new
+    def genre=(genre)
+        @genre = genre
+        genre.add_song(self) if genre
+    end
+    
+    def add_song(artist)
+        @@all << song.artist.new
+        @songs
     end
 
     def self.find_by_name(name)
         @@all.detect{|song| song.name == name}
+    end
+
+    def self.all # Class Reader
+        @@all
+    end
+
+    def self.destroy_all
+        @@all.clear
+    end
+
+    def self.reset_all   # Class Method
+        @@all.clear
+    end
+
+    def self.count       # Class Method
+        @@all.size
+    end
 
 
 end
