@@ -52,7 +52,7 @@ class MusicLibraryController
         @@all.artist.sort(ascending)
     end
 
-    def list_genre
+    def list_genres
         @@all.genre.sort(ascending)
     end
 end

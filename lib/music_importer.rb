@@ -11,17 +11,17 @@ class MusicImporter
         # Dir.entries(path).select {|path|         binding.pry
         # path.match('*.mp3')}
 
-        @files ||= Dir.glob("#{path}/*.mp3").collect do |f|
-        f.gsub("#{path}/", "")
+        @files ||= Dir.glob("#{path}/*.mp3").collect do |file|
+        file.gsub("#{path}/", "")
         end
     end
     
       def self.import
-        files.each {|f| Song.new_by_filename(f)}
+        files.each {|file| Song.new_by_filename(file)}
       end
 
       def import
-        files.each {|f| Song.create_from_filename(f)}
+        files.each {|file| Song.create_from_filename(file)}
       end
       
       def self.new_from_filename(name)
