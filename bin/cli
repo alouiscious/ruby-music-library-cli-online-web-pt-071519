@@ -1,0 +1,21 @@
+class MusicLibraryController
+    def initialize (path = ./db/mp3s/)
+        @path = path
+
+    end
+
+    def call 
+        starts and input
+        read spec file
+    end
+
+    def list_songs
+        @@all.songs.sort(ascending)
+    end
+
+    def list_artists
+        @@all.artist.sort(ascending)
+    end
+
+    def list
+end

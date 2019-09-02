@@ -1,10 +1,25 @@
 require 'pry'
+require_relative './concerns/findable.rb'
 
 class Artist
+    extend Concerns::Findable
   
-    attr_accessor :name, :genre, :artist, :songs
-    attr_reader :songs
+    attr_accessor :name
+    attr_reader :songs, :genre, :artist
+
     @@all = []
+
+ 
+    def initialize(name)
+        @name = name
+        @songs =[]
+    end
+    # def initialize(name,artist=nil,genre=nil)
+    #     @name = name
+    #     self.artist = artist
+    #     self.genre = genre 
+    #     save
+    # end
 
     def self.create(name)
         new(name).save  
@@ -18,11 +33,10 @@ class Artist
         @@all.detect{|artist| artist.name == name}
     end
 
-    def initialize(name)
-        @name = name
-        @songs = []
-        
-        save
+    def self.find_or_create_by_name(name)
+        # binding.pry
+        self.find_by_name(name) || self.create(name)
+
     end
 
     def save        # Instance Method
@@ -35,6 +49,12 @@ class Artist
         song.artist = self unless song.artist
         @songs << song unless @songs.include?(song)
     end
+    
+    def genres
+    # binding.pry
+        songs.collect { |song| song.genre }.uniq
+        
+    end
 
     def self.all # Class Reader
         @@all
@@ -44,8 +64,6 @@ class Artist
         @@all.clear
     end
 
-
-    
     def self.reset_all   # Class Method
         @@all.clear
     end
