@@ -11,7 +11,7 @@ class MusicLibraryController
     end
 
     def call 
-        # input = []
+        input = ""
     
         puts "Welcome to your music library!"
         puts "To list all of your songs, enter 'list songs'."
@@ -24,7 +24,7 @@ class MusicLibraryController
         puts "What would you like to do?"
             input = gets.strip
 
-        while input != exit
+        while input != "exit"
             if input.eql? "list songs"
                 list_songs
             elsif input.eql? "list artists"
@@ -39,6 +39,7 @@ class MusicLibraryController
                 play_song
             elsif input.eql? "exit"
                 exit
+           
             end
         end
     
