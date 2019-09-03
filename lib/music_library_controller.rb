@@ -91,22 +91,24 @@ class MusicLibraryController            # < Song
             song_sort = gets.strip.to_i 
 
         # binding.pry
-        if (1..list_songs.to_a.count).include?(song_sort)
-            # list_songs.to_a
-            # puts now_playing[song_sort - 1]
-            # p song_sort
-            # puts "#{list_songs.strip(" - ").collect {|song, index| puts song if index == song_sort}}"
-        #     now_playing = Song.all.sort{|a, b| a.name <=> b.name}[song_sort - 1]
-            puts "Playing #{list_songs.to_a[song_sort].name} by #{list_songs.to_a[song_sort].artist.name}"
-            
-        else
-            puts "Please enter a valid song number... or type 'exit' to end " 
-                song_sort = gets.strip.to_i
-                if song_sort != "exit" 
-                #      play_song
-                # else
-                    # call
-                end
+        while song_sort != 0 || nil
+            if (1..list_songs.to_a.count).include?(song_sort)
+                # list_songs.to_a
+                # puts now_playing[song_sort - 1]
+                # p song_sort
+                # puts "#{list_songs.strip(" - ").collect {|song, index| puts song if index == song_sort}}"
+            #     now_playing = Song.all.sort{|a, b| a.name <=> b.name}[song_sort - 1]
+                puts "Playing #{list_songs.to_a[song_sort - 1].name} by #{list_songs.to_a[song_sort - 1].artist.name}"
+                
+            else
+                puts "Please enter a valid song number... or type 'exit' to end " 
+                    song_sort = gets.strip.to_i
+                    if song_sort != "exit" 
+                    #      play_song
+                    # else
+                        # call
+                    end
+            end
         end
 
     end
