@@ -9,20 +9,18 @@ class Artist
 
     @@all = []
 
- 
     def initialize(name)
         @name = name
         @songs =[]
     end
-    # def initialize(name,artist=nil,genre=nil)
-    #     @name = name
-    #     self.artist = artist
-    #     self.genre = genre 
-    #     save
-    # end
 
     def self.create(name)
         new(name).save  
+    end
+
+    def save        # Instance Method
+        @@all << self
+        self
     end
 
     def add_artist
@@ -41,12 +39,6 @@ class Artist
 
         # self.find_by_name(name) ? self.find_by_name(name) : self.create(name)
     end
-
-    def save        # Instance Method
-        @@all << self
-        self
-    end
-
 
     def add_song(song)
         song.artist = self unless song.artist
@@ -74,6 +66,5 @@ class Artist
     def self.count       # Class Method
         @@all.size
     end
-
 
 end

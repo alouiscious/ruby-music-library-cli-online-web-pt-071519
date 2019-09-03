@@ -1,11 +1,9 @@
 require 'pry'
 require_relative './concerns/findable.rb'
 
-
 class Genre
     extend Concerns::Findable
  
-
     attr_accessor :name 
     attr_reader :artist, :songs, :genre
     
@@ -43,21 +41,6 @@ class Genre
     end
 
 
-    # def initialize(name,artist=nil,genre=nil)
-    #     @name = name
-    #     self.genre = genre
-    #     self.artist = artist
-    #     save
-    #     @songs = []
-    # end
-
-    def self.all # Class Reader
-        @@all
-    end
-
-    def self.destroy_all
-        @@all.clear
-    end
 
     def add_song(song)
         song.genre = self unless song.genre
@@ -69,6 +52,13 @@ class Genre
         
     end
     
+    def self.all # Class Reader
+        @@all
+    end
+
+    def self.destroy_all
+        @@all.clear
+    end
     def self.reset_all   # Class Method
         @@all.clear
     end
@@ -76,8 +66,5 @@ class Genre
     def self.count       # Class Method
         @@all.size
     end
-
-
-
 
 end

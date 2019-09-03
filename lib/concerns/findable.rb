@@ -1,6 +1,7 @@
 # require_all 'lib'
 # require_relative '../lib/artist.rb'
 # require_relative '../lib/song.rb'
+
 module Concerns
 
     module Findable
@@ -18,10 +19,3 @@ module Concerns
         end
     end
 end
-
-
-#     def destroy_all
-#         @@all.clear
-#     end
-
-# end
