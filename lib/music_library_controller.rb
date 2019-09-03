@@ -88,13 +88,25 @@ class MusicLibraryController            # < Song
 
     def play_song
         puts "Which song number would you like to play?"
-        song_sort = gets.strip.to_i
+            song_sort = gets.strip.to_i 
 
-        if (1..Song.all.length).indlude?(song_sort)
-            now_playing = Song.all.sort{|a, b| a.name <=> b.name}[song_sort == (Song.index+1)]
+        # binding.pry
+        if (1..list_songs.to_a.count).include?(song_sort)
+            # list_songs.to_a
+            # puts now_playing[song_sort - 1]
+            # p song_sort
+            # puts "#{list_songs.strip(" - ").collect {|song, index| puts song if index == song_sort}}"
+        #     now_playing = Song.all.sort{|a, b| a.name <=> b.name}[song_sort - 1]
+            puts "Playing #{list_songs.to_a[song_sort].name} by #{list_songs.to_a[song_sort].artist.name}"
             
-            
-            puts "Now playing #{song_sort}. #{now_playing}!"
+        else
+            puts "Please enter a valid song number... or type 'exit' to end " 
+                song_sort = gets.strip.to_i
+                if song_sort != "exit" 
+                #      play_song
+                # else
+                    # call
+                end
         end
 
     end
