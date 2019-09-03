@@ -90,10 +90,11 @@ class MusicLibraryController            # < Song
         puts "Which song number would you like to play?"
             song_sort = gets.strip.to_i
      
-            while song_sort >= 1 && list_songs.to_a.length > song_sort
-                binding.pry
-
-                return "Playing #{list_songs.to_a[song_sort].name} by #{list_songs.to_a[song_sort].artist.name}"
+            while list_songs.to_a.length > song_sort
+                # binding.pry
+                if song_sort >= 1
+                    return "Playing #{list_songs.to_a[song_sort].song.name} by #{list_songs.to_a[song_sort].artist.name}"
+                end                    
             end
 
     end
