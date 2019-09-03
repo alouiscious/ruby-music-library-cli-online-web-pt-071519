@@ -90,7 +90,7 @@ class MusicLibraryController            # < Song
     def play_song
         puts "Which song number would you like to play?"
         song_sort = gets.strip.to_i
-        # binding.pry
+        binding.pry
 
         now_playing = list_songs.to_a.sort{ |a, b| a.name <=> b.name }[song_sort - 1] if (1..Song.count).include?(song_sort - 1)
         # now_playing = list_songs.to_a[song_sort - 1] if (1..Song.count).include?(song_sort - 1)
