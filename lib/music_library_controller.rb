@@ -90,16 +90,12 @@ class MusicLibraryController            # < Song
     def play_song
         puts "Which song number would you like to play?"
         song_sort = gets.strip.to_i
-    
-        if list_songs.to_a.length >= song_sort && song_sort > 0
-            now_playing = list_songs.to_a[song_sort]
-            # return "Playing #{list_songs.to_a[song_sort - 1].@name} by #{list_songs.to_a[song_sort - 1].artist.name}" if now_playing
-                if now_playing
-                    return "Playing #{now_playing.name} by #{now_playing.artist.name}" 
-                end
+        # binding.pry
 
-        end
-
+        now_playing = list_songs.to_a.sort{ |a, b| a.name <=> b.name }[song_sort - 1] if (1..Song.count).include?(song_sort - 1)
+        # now_playing = list_songs.to_a[song_sort - 1] if (1..Song.count).include?(song_sort - 1)
+        puts "Playing #{now_playing.song.name} by #{now_playing.artist.name}" if now_playing
+   
     end
 
 end
